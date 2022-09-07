@@ -1,0 +1,44 @@
+package com.DoorStepService.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="profession")
+public class Profession {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long prof_id;
+	private String prof_name;
+	private Double basic_charges;
+	public Profession() {
+		super();
+	}
+	public Profession(long id, String prof_name, Double basic_charges) {
+		super();
+		this.prof_id = id;
+		this.prof_name = prof_name;
+		this.basic_charges = basic_charges;
+	}
+	public long getId() {
+		return prof_id;
+	}
+	public void setId(long id) {
+		this.prof_id = id;
+	}
+	public String getProf_name() {
+		return prof_name;
+	}
+	public void setProf_name(String prof_name) {
+		this.prof_name = prof_name;
+	}
+	public Double getBasic_charges() {
+		return basic_charges;
+	}
+	public void setBasic_charges(Double basic_charges) {
+		this.basic_charges = basic_charges;
+	}	
+}

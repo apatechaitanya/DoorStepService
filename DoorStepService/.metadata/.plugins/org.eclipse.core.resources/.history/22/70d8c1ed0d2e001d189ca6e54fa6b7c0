@@ -1,0 +1,27 @@
+package com.DoorStepService.model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="workers")
+public class workers {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	private String first_name;
+	private String last_name;
+	private String emailId;
+	private long mobile;
+	private long license;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="address")
+	private Address serAddress;
+	
+}

@@ -1,0 +1,19 @@
+package com.DoorStepService.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+
+public class Orders {
+	private long orders_id;
+	private double amount;
+	private String status;
+	private Date orderdate;
+	@OneToMany(targetEntity = Customers.class)
+	private List<Customers> customer;
+	@OneToMany(targetEntity = workers.class)
+	private List<workers> workers;
+	
+}
