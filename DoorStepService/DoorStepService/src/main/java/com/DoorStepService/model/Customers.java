@@ -23,7 +23,7 @@ public class Customers {
 	private String emailId;
 	private String password;
 	private long mobile;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,targetEntity = Address.class)
 	@JoinColumn(name = "address_id")
 	private Address address;
 	@OneToMany(targetEntity = Orders.class,cascade = CascadeType.ALL)
