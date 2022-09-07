@@ -15,13 +15,16 @@ public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long feedback_id;
-	@OneToOne
+	@OneToOne(targetEntity = Customers.class)
 	@JoinColumn(name="id")
 	private Customers customer;
 	private String feedback;
-	@ManyToOne
+	@ManyToOne(targetEntity = workers.class)
 	@JoinColumn(name="worker_id")
 	private workers worker;
+	public Feedback() {
+		super();
+	}
 	public Feedback(long feedback_id, Customers customer, String feedback, workers worker) {
 		super();
 		this.feedback_id = feedback_id;

@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,10 +23,10 @@ public class workers {
 	private String emailId;
 	private long mobile;
 	private boolean verified;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,targetEntity = Orders.class)
 	@JoinColumn(name="orders_id")
 	private List<Orders> orders;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL,targetEntity = Profession.class)
 	@JoinColumn(name="prof_id")
 	private List<Profession> profession;
 	public workers() {

@@ -18,10 +18,10 @@ public class Address {
 	private String landmark;
 	private int pincode;
 	private String state;
-	@OneToOne
+	@OneToOne(targetEntity = workers.class)
 	@JoinColumn(name="worker_id")
 	private workers worker;
-	@OneToOne
+	@OneToOne(targetEntity = Customers.class)
 	@JoinColumn(name="cust_id")
 	private Customers customers;
 	public Address(long address_id, String city, String landmark, int pincode, String state, workers worker,
