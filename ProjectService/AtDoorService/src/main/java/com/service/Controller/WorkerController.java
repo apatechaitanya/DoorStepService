@@ -57,14 +57,14 @@ public class WorkerController {
 	
 	//------------Delete Worker-------------------------
 	
-	@DeleteMapping("/Worker/{worker_id}")
+	@DeleteMapping("/deleteWorker/{worker_id}")
 	public void deleteCustomer(@PathVariable Long worker_id){
 		workerInterface.removeWorker(worker_id);
 		}
 	
 	
 	//------------Update worker-------------------------
-	@PutMapping("/Worker")
+	@PutMapping("/updateWorker")
 	public Workers updatecustomer(@RequestBody Workers worker){    	
 		return workerInterface.updateWorker(worker);
 				

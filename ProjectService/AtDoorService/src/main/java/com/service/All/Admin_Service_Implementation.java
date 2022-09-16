@@ -5,9 +5,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.DoorStepService.model.Address;
 import com.DoorStepService.model.Admin;
 import com.DoorStepService.model.Profession;
 import com.service.Dao.AdminDao;
+import com.servicr.payload.AdminuserPayload;
 
 @Service
 public class Admin_Service_Implementation implements Admin_Service_Interface {
@@ -18,7 +20,25 @@ public class Admin_Service_Implementation implements Admin_Service_Interface {
 	
 	
 	@Override
-	public void addAdmin(Admin admin) {
+	public void addAdmin(AdminuserPayload adminuserPayload) {
+		
+		Admin admin =new Admin();
+		
+		admin.setUsername(adminuserPayload.getUsername());
+		admin.setPassword(adminuserPayload.getPassword());
+		admin.setEmailId(adminuserPayload.getEmailId());
+		admin.setMobileno(adminuserPayload.getMobileno());
+		
+		Address add =new Address();
+		add.setCity(adminuserPayload.getCity());
+		add.setLandmark(adminuserPayload.getLandmark());
+		add.setPincode(adminuserPayload.getPincode());
+		add.setState(adminuserPayload.getState());
+		
+		
+		admin.setAddress(add);
+		
+		
 		admindao.save(admin);
 		
 	}

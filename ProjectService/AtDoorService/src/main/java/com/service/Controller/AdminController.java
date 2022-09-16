@@ -16,6 +16,7 @@ import com.DoorStepService.model.Profession;
 import com.DoorStepService.model.Workers;
 import com.service.All.Admin_Service_Interface;
 import com.service.All.Worker_Service_Interface;
+import com.servicr.payload.AdminuserPayload;
 
 
 @RestController
@@ -31,14 +32,22 @@ public class AdminController {
 		@PostMapping("/RegistrationAdmin")
 		
 		
-			public void addadmin(@RequestBody Admin admin){
+		/*	public void addadmin(@RequestBody Admin admin){
 				 System.out.println("ENtered admin controller");
 				 System.out.println("NAme"+ admin.getUsername());
 				 System.out.println("Address "+admin.getAddress());
 				
 				 adminInterface.addAdmin(admin);	
 		}
+		*/
 		
+		public void addadmin(@RequestBody AdminuserPayload adminPayload){
+			 System.out.println("ENtered admin Payload controller");
+			 System.out.println("NAme"+ adminPayload.getUsername());
+			 System.out.println("Address "+adminPayload.getCity());
+			
+			 adminInterface.addAdmin(adminPayload);	
+		}
 		
 		//------------Get Admin by ID-------------------------
 		

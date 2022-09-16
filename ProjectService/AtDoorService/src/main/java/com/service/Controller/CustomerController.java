@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.DoorStepService.model.Customers;
 import com.service.All.Customer_Service_Interface;
+import com.servicr.payload.CustomerPayload;
 
 @RestController
 @RequestMapping("/Customer/Controller")
@@ -28,11 +29,11 @@ public class CustomerController {
 	@PostMapping("/Registration")
 	
 	
-		public void addcustomer(@RequestBody Customers customer){
+		public void addcustomer(@RequestBody CustomerPayload customerpayload){
 			 System.out.println("ENtered locadd");		
 			    
-			 System.out.println(customer.getFirst_name());
-			customerInterface.addCustomer(customer);	
+			 System.out.println(customerpayload.getFirst_name());
+			customerInterface.addCustomer(customerpayload);	
 	}
 	
 	
@@ -48,22 +49,25 @@ public class CustomerController {
 	
 	@GetMapping("/GetCustomers/{cust_id}")
 	public Customers getCustomer(@PathVariable Long cust_id){
-	return customerInterface.fetchCustomerById(cust_id).orElse(null);
+	return customerInterface.fetchCustomerById(cust_id);
 	}
 	
 	
 	//------------Delete customer-------------------------
 	
-	@DeleteMapping("/Customer/{cust_id}")
+	@DeleteMapping("/deleteCustomer/{cust_id}")
 	public void deleteCustomer(@PathVariable Long cust_id){
 		 customerInterface.removeCustomer(cust_id);
 		}
 	
 	
 	//------------Update customer-------------------------
-	@PutMapping("/Customers")
-	public Customers updatecustomer(@RequestBody Customers customer){    	
-		return customerInterface.updateCustomer(customer);
+	@PutMapping("/updateCustomers/{id}")
+	public Customers updatecustomer(@RequestBody CustomerPayload customerpayload,@PathVariable Long id){ 
+		
+		
+	
+		return customerInterface.updateCustomer(customerpayload,id);
 				
 }
 	

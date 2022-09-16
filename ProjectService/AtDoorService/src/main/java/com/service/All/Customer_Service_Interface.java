@@ -6,14 +6,15 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.DoorStepService.model.Customers;
+import com.servicr.payload.CustomerPayload;
 
 
 public interface Customer_Service_Interface {
 
-	public void addCustomer(Customers customer);
+	public void addCustomer(CustomerPayload customerpayload);
 	public List<Customers> getCustomers();
-	public Optional<Customers> fetchCustomerById(long id);
-	public Customers updateCustomer(Customers location);
+	public Customers fetchCustomerById(long id);
+	public Customers updateCustomer(CustomerPayload customerpayload,Long id);
 	public void removeCustomer(Long cust_id);
 	
 }
